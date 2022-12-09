@@ -1,0 +1,2 @@
+gunicorn==20.1.0
+-e git+https://github.com/M1RRoN/python-project-52@976318c2fbeeea26a399ec52749197664e203c79#egg=hexlet_code
