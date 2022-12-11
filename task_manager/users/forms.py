@@ -5,7 +5,7 @@ from django.forms import ModelForm, TextInput
 class UserForm(ModelForm):
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'nickname']
+        fields = ['first_name', 'last_name', 'nickname', 'password', 'confirm_password']
         widgets = {
             'first_name': TextInput(attrs={
                 'class': 'form-control',
@@ -20,6 +20,16 @@ class UserForm(ModelForm):
             'nickname': TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Введите имя пользователя',
+                'maxlength': '150'
+            }),
+            'password': TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Пароль',
+                'maxlength': '150'
+            }),
+            'confirm_password': TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Подтверждение пароля',
                 'maxlength': '150'
             }),
         }

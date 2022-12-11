@@ -14,5 +14,5 @@ from .models import User
 
 def users_page(request):
     users = User.objects.all()
-    return render(request, 'users.html', {'title': 'Пользователи', 'users': users})
+    return render(request, 'users.html', {'users': users})
 
