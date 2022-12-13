@@ -15,14 +15,14 @@ version = "0.2.1"
 description = "Backport of the standard library zoneinfo module"
 category = "main"
 optional = false
-python-versions = "3.8.10"
+python-versions = ">=3.6"
 
 [package.extras]
 tzdata = ["tzdata"]
 
 [[package]]
 name = "django"
-version = "4.1.4"
+version = "*"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
 category = "main"
 optional = false
