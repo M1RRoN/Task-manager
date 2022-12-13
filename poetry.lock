@@ -15,7 +15,7 @@ version = "0.2.1"
 description = "Backport of the standard library zoneinfo module"
 category = "main"
 optional = false
-python-versions = ">=3.6"
+python-versions = "3.8.10"
 
 [package.extras]
 tzdata = ["tzdata"]
