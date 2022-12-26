@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from users.forms import UserForm
+# from users.forms import UserForm
 
 
 def index(request):

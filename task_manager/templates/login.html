@@ -7,10 +7,14 @@
 
 
 {% block content %}
-<h1>{% trans "Вход" %}</h1>
+<!--{% if form.errors %}-->
+<!--    <p>{{ form.errors.error }}</p>-->
+<!--{% endif %}-->
+<!--<h1>{% trans "Вход" %}</h1>-->
 <form method="post">
-    <input type="hidden" name="csrfmiddlewaretoken"
-           value="GWLT1f7Ghe3nHfVuR3zuSuQITu2zaJC5Y34D5kOsKvMai9B3InOTYzTZOAKxhX5Z">
+    {% csrf_token %}
+<!--    {{ form.as_p }}-->
+<!--    <button type="submit">Voity</button>-->
     <div class="form-group"><label for="id_username">{% trans "Имя пользователя" %}</label><input type="text"
                                                                                                   name="username"
                                                                                                   autofocus

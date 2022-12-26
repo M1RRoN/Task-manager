@@ -1,11 +1,16 @@
-from .models import User
-from django.forms import ModelForm, TextInput
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
+from django.forms import ModelForm, TextInput, PasswordInput
+from django.contrib.auth.forms import UserCreationForm
+
+User = get_user_model()
 
 
-class UserForm(ModelForm):
+class UserForm(UserCreationForm):
+
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'nickname', 'password', 'confirm_password']
+        fields = ['first_name', 'last_name', 'username', 'password1', 'password2']
         widgets = {
             'first_name': TextInput(attrs={
                 'class': 'form-control',
@@ -17,17 +22,17 @@ class UserForm(ModelForm):
                 'placeholder': 'Введите фамилию',
                 'maxlength': '150'
             }),
-            'nickname': TextInput(attrs={
+            'username': TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Введите имя пользователя',
                 'maxlength': '150'
             }),
-            'password': TextInput(attrs={
+            'password1': PasswordInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Пароль',
                 'maxlength': '150'
             }),
-            'confirm_password': TextInput(attrs={
+            'password2': PasswordInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Подтверждение пароля',
                 'maxlength': '150'
