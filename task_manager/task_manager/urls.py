@@ -15,22 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-# from rest_framework.routers import SimpleRouter
+from django.contrib.auth import views as auth_views
 
-# import users.views
-# from users.views import index_page
-# from users.views import UserViewSet
-
-# router = SimpleRouter()
-#
-# router.register(r'user', UserViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
     path('users/', include('users.urls')),
-    # path('registration/', include('users.urls')),
-    # path('sign_in/', include('users.urls')),
+    path('login/', auth_views.LoginView.as_view(template_name='task_manager/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='task_manager/logout.html'), name='logout'),
+    path('statuses/', include('statuses.urls')),
+    path('labels/', include('labels.urls')),
+    # path('tasks/', include('tasks.urls')),
 ]
 
-# urlpatterns += router.urls
+

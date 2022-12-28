@@ -23,13 +23,12 @@
       <th scope="row">{{ user.id }}</th>
       <td>{{ user.username }}</td>
       <td>{{ user.first_name }} {{ user.last_name }}</td>
-      <td>{{ user.created_at }}</td>
-
+      <td>{{ user.date_joined }}</td>
       <td>
-          <a href="/users/<id>/update/">Изменить</a>
+          <a href="{% url 'update' user.pk %}">Изменить</a>
           <br>
-          <a href="/users/<id>/delete/">Удалить</a>
-        </td>
+          <a href="{% url 'delete' user.pk %}">Удалить</a>
+      </td>
     </tr>
     {% endfor %}
 
@@ -37,4 +36,3 @@
 </table>
 
 {% endblock %}
-

@@ -35,10 +35,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users',
+
     'rest_framework',
-    'main',
     'bootstrap5',
+
+    'users',
+    'main',
+    'statuses',
+    'labels',
+    # 'tasks'
 ]
 
 MIDDLEWARE = [
@@ -124,4 +129,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-# AUTH_USER_MODEL = 'users.CustomUser'
+AUTH_USER_MODEL = 'users.CustomUser'

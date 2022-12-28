@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Метки" %}
+{% endblock %}
+
+{% block content %}
+<h1>{% trans "Метки" %}</h1>
+<a href="{% url 'create_label' %}">Создать метку</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">{% trans "Имя" %}</th>
+      <th scope="col">{% trans "Дата создания" %}</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for label in labels %}
+    <tr>
+      <th scope="row">{{ label.id }}</th>
+      <td>{{ label.name }}</td>
+      <td>{{ label.created_at }}</td>
+      <td>
+          <a href="{% url 'update_label' label.pk %}">Изменить</a>
+          <br>
+          <a href="{% url 'delete_label' label.pk %}">Удалить</a>
+      </td>
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+
+{% endblock %}
