@@ -1,12 +1,10 @@
 from django.urls import path
-
-from statuses.views import CreateStatusView
-from users import views
+from tasks.views import CreateTaskView, UpdateTaskView, DeleteTaskView, index
 
 
 urlpatterns = [
-    # path('', views.users_page, name='statuses'),
-    # path('create/', CreateTaskView.as_view(), name='create_status'),
-    # path('<int:pk>/update/', UpdateUser.as_view(), name='update'),
-    # path('<int:pk>/delete/', DeleteUser.as_view(), name='delete'),
+    path('', index, name='tasks'),
+    path('create/', CreateTaskView.as_view(), name='create_task'),
+    path('<int:pk>/update/', UpdateTaskView.as_view(), name='update_task'),
+    path('<int:pk>/delete/', DeleteTaskView.as_view(), name='delete_task'),
 ]

@@ -8,5 +8,5 @@ from django.contrib.auth import get_user_model
 class CustomUser(AbstractUser):
 
     def __str__(self):
-        return self.username
+        return self.get_full_name()
 
