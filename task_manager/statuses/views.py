@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
 
@@ -13,7 +14,7 @@ def index(request):
     return render(request, 'statuses/index.html', {'statuses': statuses})
 
 
-class CreateStatusView(LoginRequiredMixin, CreateView):
+class CreateStatusView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     model = Status
     form_class = StatusForm
     template_name = 'statuses/create.html'
@@ -21,7 +22,7 @@ class CreateStatusView(LoginRequiredMixin, CreateView):
     success_message = 'Status create!'
 
 
-class UpdateStatusView(LoginRequiredMixin, UpdateView):
+class UpdateStatusView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = Status
     form_class = StatusForm
     template_name = 'statuses/update.html'
@@ -29,7 +30,7 @@ class UpdateStatusView(LoginRequiredMixin, UpdateView):
     success_message = 'Status update!'
 
 
-class DeleteStatusView(LoginRequiredMixin, DeleteView):
+class DeleteStatusView(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     model = Status
     template_name = 'statuses/delete.html'
     success_url = reverse_lazy('statuses')

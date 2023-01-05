@@ -1,9 +1,9 @@
-from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
-from django.http import request
-from django.shortcuts import render, redirect
-from django.urls import reverse_lazy, reverse
-from django.views.generic import CreateView, FormView, UpdateView, DeleteView
+from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, UpdateView, DeleteView
+
+from Mixin import MyLoginRequiredMixin, UserPermissionMixin
 from .forms import UserForm
 from .models import CustomUser
 
@@ -18,18 +18,19 @@ class RegisterUser(SuccessMessageMixin, CreateView):
     form_class = UserForm
     template_name = 'users/create.html'
     success_url = reverse_lazy('home')
-    success_message = 'User create!'
+    success_message = 'User create'
 
 
-class UpdateUser(SuccessMessageMixin, UpdateView):
+class UpdateUser(SuccessMessageMixin, MyLoginRequiredMixin, UserPermissionMixin, UpdateView):
     model = CustomUser
     form_class = UserForm
     template_name = 'users/update.html'
     success_url = reverse_lazy('users')
-    success_message = 'USER_UPDATE_MESSAGE'
+    success_message = 'User update'
 
 
-class DeleteUser(DeleteView):
+class DeleteUser(SuccessMessageMixin, MyLoginRequiredMixin, UserPermissionMixin, DeleteView):
     model = CustomUser
     template_name = 'users/delete.html'
     success_url = reverse_lazy('login')
+    success_message = 'User delete'

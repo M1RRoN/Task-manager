@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
 
@@ -13,7 +14,7 @@ def index(request):
     return render(request, 'tasks/index.html', {'tasks': tasks})
 
 
-class CreateTaskView(LoginRequiredMixin, CreateView):
+class CreateTaskView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     model = Task
     form_class = TaskForm
     template_name = 'tasks/create.html'
@@ -27,7 +28,7 @@ class CreateTaskView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class UpdateTaskView(LoginRequiredMixin, UpdateView):
+class UpdateTaskView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = Task
     form_class = TaskForm
     template_name = 'tasks/update.html'
@@ -35,7 +36,7 @@ class UpdateTaskView(LoginRequiredMixin, UpdateView):
     success_message = 'Task update!'
 
 
-class DeleteTaskView(LoginRequiredMixin, DeleteView):
+class DeleteTaskView(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     model = Task
     template_name = 'tasks/delete.html'
     success_url = reverse_lazy('tasks')

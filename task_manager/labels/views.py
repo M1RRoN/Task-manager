@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
 from labels.forms import LabelForm
@@ -11,15 +12,15 @@ def index(request):
     return render(request, 'labels/index.html', {'labels': labels})
 
 
-class CreateLabelView(LoginRequiredMixin, CreateView):
+class CreateLabelView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     model = Label
     form_class = LabelForm
     template_name = 'labels/create.html'
     success_url = reverse_lazy('labels')
-    success_message = 'Label create!'
+    success_message = 'Label is created'
 
 
-class UpdateLabelView(LoginRequiredMixin, UpdateView):
+class UpdateLabelView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = Label
     form_class = LabelForm
     template_name = 'labels/update.html'
@@ -27,7 +28,7 @@ class UpdateLabelView(LoginRequiredMixin, UpdateView):
     success_message = 'Label update!'
 
 
-class DeleteLabelView(LoginRequiredMixin, DeleteView):
+class DeleteLabelView(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     model = Label
     template_name = 'labels/delete.html'
     success_url = reverse_lazy('labels')
