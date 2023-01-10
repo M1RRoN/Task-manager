@@ -29,5 +29,5 @@ class TaskPassesTestMixin(UserPassesTestMixin):
 
     def handle_no_permission(self):
         url = reverse_lazy('tasks')
-        messages.error(self.request, "Задачу может удалить только её автор")
+        messages.error(self.request, "Задачу может изменить только её автор")
         return redirect(url)

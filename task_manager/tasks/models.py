@@ -15,8 +15,3 @@ class Task(models.Model):
 
     def __str__(self):
         return self.name
-
-
-# class LabelForTask(models.Model):
-#     task = models.ForeignKey(Task, on_delete=models.CASCADE, null=True)
-#     labels = models.ForeignKey(Label, on_delete=models.PROTECT, null=True)

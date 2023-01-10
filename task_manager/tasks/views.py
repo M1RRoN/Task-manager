@@ -3,6 +3,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
 
+from Mixin import TaskPassesTestMixin
 from tasks.forms import TaskForm
 from tasks.models import Task
 
@@ -28,7 +29,7 @@ class CreateTaskView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class UpdateTaskView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
+class UpdateTaskView(TaskPassesTestMixin, SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = Task
     form_class = TaskForm
     template_name = 'tasks/update.html'
@@ -36,7 +37,7 @@ class UpdateTaskView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     success_message = 'Task update!'
 
 
-class DeleteTaskView(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
+class DeleteTaskView(TaskPassesTestMixin, SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     model = Task
     template_name = 'tasks/delete.html'
     success_url = reverse_lazy('tasks')
