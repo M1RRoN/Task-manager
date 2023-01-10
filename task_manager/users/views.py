@@ -21,7 +21,7 @@ class RegisterUser(SuccessMessageMixin, CreateView):
     success_message = 'User create'
 
 
-class UpdateUser(SuccessMessageMixin, MyLoginRequiredMixin, UserPermissionMixin, UpdateView):
+class UpdateUser(UserPermissionMixin, MyLoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = CustomUser
     form_class = UserForm
     template_name = 'users/update.html'
@@ -29,7 +29,7 @@ class UpdateUser(SuccessMessageMixin, MyLoginRequiredMixin, UserPermissionMixin,
     success_message = 'User update'
 
 
-class DeleteUser(SuccessMessageMixin, MyLoginRequiredMixin, UserPermissionMixin, DeleteView):
+class DeleteUser(UserPermissionMixin, MyLoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = CustomUser
     template_name = 'users/delete.html'
     success_url = reverse_lazy('login')

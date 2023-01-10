@@ -1,3 +1,7 @@
+import os
+import json
 from django.test import TestCase
 
-# Create your tests here.
+
+class SetupTestLabels(TestCase):
+    fixtures = ['labels.json']

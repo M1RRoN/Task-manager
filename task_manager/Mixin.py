@@ -19,7 +19,7 @@ class UserPermissionMixin(UserPassesTestMixin):
 
     def handle_no_permission(self):
         messages.error(self.request, "У вас нет прав для изменения другого пользователя.")
-        url = reverse_lazy('users:users')
+        url = reverse_lazy('users')
         return redirect(url)
 
 
