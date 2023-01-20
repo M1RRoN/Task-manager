@@ -88,8 +88,8 @@ DATABASES = {
         'NAME': 'task_manager',
         'USER': 'postgres',
         'PASSWORD': '010989',
-        'HOST': 'localhost',
-        'PORT': '',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
