@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load bootstrap5 %}
 
 {% block title %}
 {% trans "Задачи" %}
@@ -8,6 +9,17 @@
 {% block content %}
 <h1>{% trans "Задачи" %}</h1>
 <a href="{% url 'create_task' %}">Создать задачу</a>
+<br>
+<div class="card mb-3">
+    <div class="card-body bg-light">
+        <h3>{% trans 'Поиск задачи' %}</h3>
+        <form method="get" class="form-check">
+            {% bootstrap_form filter.form %}
+            <input class="btn btn-primary" type="submit" value="Показать">
+        </form>
+    </div>
+</div>
+<br>
 <table class="table table-striped">
   <thead>
     <tr>
