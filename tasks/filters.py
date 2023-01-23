@@ -18,18 +18,18 @@ class TaskFilter(django_filters.FilterSet):
 
     status = filters.ModelChoiceFilter(
         queryset=Status.objects.all(),
-        label=_('Status')
+        label=_('Статус')
     )
     executor = filters.ModelChoiceFilter(queryset=CustomUser.objects.all(),
-                                         label=_('Executor'))
+                                         label=_('Исполнитель'))
     labels = filters.ModelChoiceFilter(queryset=Label.objects.all(),
-                                       label=_('Label'))
+                                       label=_('Метка'))
     self_author = filters.BooleanFilter(
         field_name='author',
         widget=forms.widgets.CheckboxInput(
             attrs={'class': 'form-check'}
         ),
-        label=_('Only your tasks'),
+        label=_('Только Ваши задачи'),
         method='choose_author'
     )
 
