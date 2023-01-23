@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "hexlet-code"
 version = "0.1.0"
-description = ""
+description = "Simple task manager"
 authors = ["M1RRoN <mds.myst@gmail.com>"]
 readme = "README.md"
 packages = [{include = "task_manager"}]
@@ -12,7 +12,7 @@ gunicorn = "^20.1.0"
 setuptools = "^65.6.3"
 django = "^4.1.4"
 psycopg2 = "^2.9.5"
-django-bootstrap-v5 = "^1.0.11
+django-bootstrap-v5 = "^1.0.11"
 django-filter = "^22.1"
 
 
