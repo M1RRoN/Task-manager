@@ -1,6 +1,21 @@
-from django.shortcuts import render, redirect
-# from users.forms import UserForm
+from django.contrib import messages
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import render
 
 
 def index(request):
     return render(request, 'task_manager/index.html')
+
+
+class LoginUser(SuccessMessageMixin, LoginView):
+    form_class = AuthenticationForm
+    template_name = 'task_manager/login'
+    success_message = 'Вы залогинены'
+
+
+class LogoutUser(SuccessMessageMixin, LogoutView):
+    def get(self, request, *args, **kwargs):
+        messages.info(request, 'You are logged out.')
+        return super().get(request, *args, **kwargs)
