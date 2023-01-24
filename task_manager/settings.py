@@ -83,26 +83,6 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     # 'default': {
-#     #     'ENGINE': 'django.db.backends.sqlite3',
-#     #     'NAME': 'db.sqlite3', # This is where you put the name of the db file.
-#     #              # If one doesn't exist, it will be created at migration time.
-#     # }
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'task_manager',
-#         'USER': 'postgres',
-#         'PASSWORD': '010989',
-#         'HOST': '127.0.0.1',
-#         'PORT': '5432',
-#     }
-# }
-# DATABASES['default'] = dj_database_url.config(
-#     default=DATABASE_URL,
-#     conn_max_age=600,
-#     conn_health_checks=True,
-# )
 DATABASES['default'] = dj_database_url.config(default='DATABASE_URL', engine='django.db.backends.postgresql')
 
 # Password validation
