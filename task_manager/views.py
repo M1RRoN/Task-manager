@@ -17,5 +17,5 @@ class LoginUser(SuccessMessageMixin, LoginView):
 
 class LogoutUser(SuccessMessageMixin, LogoutView):
     def get(self, request, *args, **kwargs):
-        messages.info(request, 'You are logged out.')
+        messages.info(request, 'Вы разлогинены')
         return super().get(request, *args, **kwargs)
