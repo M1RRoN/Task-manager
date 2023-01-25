@@ -26,11 +26,11 @@ class UpdateUser(UserPermissionMixin, MyLoginRequiredMixin, SuccessMessageMixin,
     form_class = UserForm
     template_name = 'users/update.html'
     success_url = reverse_lazy('users')
-    success_message = 'User update'
+    success_message = 'Пользователь успешно изменён'
 
 
 class DeleteUser(UserPermissionMixin, MyLoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = CustomUser
     template_name = 'users/delete.html'
     success_url = reverse_lazy('login')
-    success_message = 'User delete'
+    success_message = 'Пользователь удалён'
