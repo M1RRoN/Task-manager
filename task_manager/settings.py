@@ -27,7 +27,7 @@ load_dotenv()
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get('DEBUG', False))
+DEBUG = bool(os.environ.get('DEBUG', True))
 
 ALLOWED_HOSTS = ['*']
 
@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'users',
     'statuses',
     'labels',
-    'tasks'
+    'tasks.apps.TasksConfig'
 ]
 
 MIDDLEWARE = [
