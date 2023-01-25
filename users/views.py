@@ -33,4 +33,4 @@ class DeleteUser(UserPermissionMixin, MyLoginRequiredMixin, SuccessMessageMixin,
     model = CustomUser
     template_name = 'users/delete.html'
     success_url = reverse_lazy('users')
-    success_message = 'Пользователь удалён'
+    success_message = 'Пользователь успешно удалён'
