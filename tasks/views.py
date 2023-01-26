@@ -12,15 +12,9 @@ from tasks.models import Task
 
 class TaskListView(FilterView):
     model = Task
-    # fields = ['id', 'name', 'status',
-    #           'author', 'executor', 'created_at']
     template_name = 'tasks/index.html'
     filterset_class = TaskFilter
     context_object_name = "tasks"
-    # def get_context_data(self, **kwargs):
-    #     context = super(TaskListView, self).get_context_data(**kwargs)
-    #     context['tasks'] = Task.objects.all()
-    #     return context
 
 
 class CreateTaskView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
@@ -28,7 +22,7 @@ class CreateTaskView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     form_class = TaskForm
     template_name = 'tasks/create.html'
     success_url = reverse_lazy('tasks')
-    success_message = 'Task create!'
+    success_message = 'Задача успешно создана'
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -42,11 +36,11 @@ class UpdateTaskView(TaskPassesTestMixin, SuccessMessageMixin, LoginRequiredMixi
     form_class = TaskForm
     template_name = 'tasks/update.html'
     success_url = reverse_lazy('tasks')
-    success_message = 'Task update!'
+    success_message = 'Задача успешно изменена'
 
 
 class DeleteTaskView(TaskPassesTestMixin, SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     model = Task
     template_name = 'tasks/delete.html'
     success_url = reverse_lazy('tasks')
-    success_message = 'Task delete!'
+    success_message = 'Задача успешно удалена'

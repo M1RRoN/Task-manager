@@ -5,7 +5,7 @@ from users.models import CustomUser
 
 
 class Task(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, verbose_name="Имя")
     description = models.TextField(null=True)
     author = models.ForeignKey(CustomUser, on_delete=models.PROTECT, null=True)
     executor = models.ForeignKey(CustomUser, on_delete=models.PROTECT, null=True, related_name='executor')
