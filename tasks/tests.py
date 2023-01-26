@@ -4,12 +4,8 @@ import json
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse_lazy
-
-from labels.models import Label
-from statuses.models import Status
 from tasks.models import Task
 from task_manager.settings import FIXTURE_DIRS
-from users.models import CustomUser
 
 
 class SetupTestTasks(TestCase):
@@ -27,7 +23,6 @@ class SetupTestTasks(TestCase):
         self.task2 = Task.objects.get(pk=2)
         with open(os.path.join(FIXTURE_DIRS[0], "test_task1.json")) as file:
             self.test_task = json.load(file)
-
 
 
 class TestTask(SetupTestTasks):

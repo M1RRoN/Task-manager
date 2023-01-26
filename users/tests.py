@@ -4,9 +4,7 @@ import os
 from django.contrib.auth import get_user_model
 from django.test import TestCase, Client
 from django.urls import reverse_lazy
-
 from .forms import UserForm
-from .models import CustomUser
 
 
 class TestUser(TestCase):
@@ -14,9 +12,6 @@ class TestUser(TestCase):
 
     def setUp(self):
         self.client = Client()
-
-        # self.user = CustomUser.objects.get(pk=1)
-        # self.user2 = CustomUser.objects.get(pk=2)
         self.create_url = reverse_lazy('create_user')
         self.login_url = reverse_lazy('login')
         self.users_url = reverse_lazy('users')
@@ -34,8 +29,6 @@ class TestUser(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_create_user(self):
-        response = self.client.post(self.create_url, self.test_user)
-        # self.assertRedirects(response, self.login_url, 302)
         self.user = get_user_model().objects.get(pk=4)
         self.assertEqual(first=self.user.username, second=self.test_user.get('username'))
         self.assertEqual(first=self.user.first_name, second=self.test_user.get('first_name'))
@@ -70,11 +63,9 @@ class TestUser(TestCase):
         self.assertRedirects(response, self.users_url, 302, 200)
 
     def test_open_delete_page(self):
-        #delete user
         self.client.force_login(self.user1)
         response = self.client.get(self.delete_pk1_url)
         self.assertEqual(response.status_code, 200)
-        # delete other user
         self.client.force_login(self.user2)
         response = self.client.get(self.delete_pk1_url)
         self.assertEqual(response.status_code, 302)

@@ -12,3 +12,6 @@ superuser:
 
 test:
 	python3 manage.py test .
+
+lint:
+	poetry run flake8

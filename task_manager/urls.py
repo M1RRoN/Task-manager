@@ -15,8 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.contrib.auth import views as auth_views
-
 from task_manager import views
 from task_manager.views import LoginUser, LogoutUser
 
@@ -30,5 +28,3 @@ urlpatterns = [
     path('labels/', include('labels.urls')),
     path('tasks/', include('tasks.urls')),
 ]
-
-
