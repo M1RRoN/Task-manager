@@ -35,8 +35,8 @@
   <tbody>
     {% for task in tasks %}
     <tr>
-      <td>{{ task.id }}</td>
-      <td>{{ task.name }}</td>
+      <th scope="row">{{ task.pk }}</th>
+      <td><a href="/tasks/{{ task.pk }}">{{ task.name }}</a></td>
       <td>{{ task.status }}</td>
       <td>{{ task.author }}</td>
       <td>{{ task.executor }}</td>
