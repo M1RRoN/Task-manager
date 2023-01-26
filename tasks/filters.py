@@ -24,7 +24,7 @@ class TaskFilter(django_filters.FilterSet):
         widget=forms.widgets.CheckboxInput(
             attrs={'class': 'form-check'}
         ),
-        label=_('Только Ваши задачи'),
+        label=_('Только свои задачи'),
         method='choose_author'
     )
 
