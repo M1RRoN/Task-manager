@@ -27,7 +27,7 @@ class UpdateStatusView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     form_class = StatusForm
     template_name = 'statuses/update.html'
     success_url = reverse_lazy('statuses')
-    success_message = 'Статус успешно обновлён'
+    success_message = 'Статус успешно изменён'
 
 
 class DeleteStatusView(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
