@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView, DeleteView
+from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 from django_filters.views import FilterView
 
 from Mixin import TaskPassesTestMixin
@@ -44,3 +44,8 @@ class DeleteTaskView(TaskPassesTestMixin, SuccessMessageMixin, LoginRequiredMixi
     template_name = 'tasks/delete.html'
     success_url = reverse_lazy('tasks')
     success_message = 'Задача успешно удалена'
+
+
+class TaskDetailView(SuccessMessageMixin, LoginRequiredMixin, DetailView):
+    model = Task
+    template_name = "tasks/task.html"
