@@ -29,6 +29,8 @@ class TestUser(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_create_user(self):
+        response = self.client.post(path=self.create_url, data=self.test_user)
+        self.assertRedirects(response, self.login_url, 302)
         self.user = get_user_model().objects.get(pk=4)
         self.assertEqual(first=self.user.username, second=self.test_user.get('username'))
         self.assertEqual(first=self.user.first_name, second=self.test_user.get('first_name'))
