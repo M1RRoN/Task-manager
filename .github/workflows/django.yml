@@ -6,10 +6,6 @@ on:
   pull_request:
     branches: [ "main" ]
 
-env:
-  SECRET_KEY: ${{ secrets.SECRET_KEY }}
-  DATABASE_URL: ${{ secrets.DATABASE_URL }}
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -36,7 +32,7 @@ jobs:
     - name: Test & publish code coverage
       uses: paambaati/codeclimate-action@v3.0.0
       env:
-        CC_TEST_REPORTER_ID: ${{ secrets.TEST_COVERAGE_52 }}
+        CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE }}
       with:
         coverageCommand: make test-coverage
         debug: true
