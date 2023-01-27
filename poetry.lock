@@ -22,7 +22,7 @@ tzdata = ["tzdata"]
 
 [[package]]
 name = "django"
-version = "*"
+version = "4.1.4"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
 category = "main"
 optional = false
