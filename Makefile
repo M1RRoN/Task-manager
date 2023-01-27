@@ -14,7 +14,7 @@ superuser:
 	python3 manage.py createsuperuser
 
 test:
-	python3 manage.py test .
+	poetry run python manage.py test
 
 lint:
 	poetry run flake8
