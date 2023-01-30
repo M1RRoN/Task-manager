@@ -93,14 +93,8 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db2.sqlite3'
-    }
+    "default": dj_database_url.config(conn_max_age=600)
 }
-
-my_db = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(my_db)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
