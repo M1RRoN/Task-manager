@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 import rollbar
-from django.conf.global_settings import DATABASES
+# from django.conf.global_settings import DATABASES
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 import dj_database_url
@@ -92,19 +92,19 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db`.sqlite3'
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3'
+    }
+}
 
-DATABASES['default'] = dj_database_url.config(
-    default='DATABASE_URL', engine='django.db.backends.postgresql'
-)
+# DATABASES['default'] = dj_database_url.config(
+#     default='DATABASE_URL', engine='django.db.backends.postgresql'
+# )
 
-# my_db = dj_database_url.config(conn_max_age=600)
-# DATABASES['default'].update(my_db)
+my_db = dj_database_url.config(conn_max_age=600, engine='django.db.backends.postgresql')
+DATABASES['default'].update(my_db)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
