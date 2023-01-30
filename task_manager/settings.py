@@ -18,12 +18,12 @@ import dj_database_url
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent
-load_dotenv(os.path.join(BASE_DIR, '.env'))
+load_dotenv()
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY',)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get('DEBUG', True))
@@ -61,7 +61,7 @@ MIDDLEWARE = [
 ]
 
 ROLLBAR = {
-    'access_token': 'd90f740145984f2a9741e2a913004054',
+    'access_token': os.environ.get('ROLLBAR_ACCESS_TOKEN',),
     'environment': 'development' if DEBUG else 'production',
     'code_version': '1.0',
     'root': BASE_DIR,
