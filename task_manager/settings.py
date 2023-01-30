@@ -103,8 +103,8 @@ DATABASES = {
 #     default='DATABASE_URL', engine='django.db.backends.postgresql'
 # )
 
-my_db = dj_database_url.config(conn_max_age=600, engine='django.db.backends.postgresql')
-DATABASES['default'].update(my_db)
+# my_db = dj_database_url.config(conn_max_age=600, engine='django.db.backends.postgresql')
+# DATABASES['default'].update(my_db)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
