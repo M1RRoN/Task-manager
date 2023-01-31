@@ -20,7 +20,6 @@ python-dotenv = "^0.21.0"
 rollbar = "^0.16.3"
 pytest-cov = "^4.0.0"
 coverage = "^6.5.0"
-backports-zoneinfo = "*"
 
 
 [build-system]
