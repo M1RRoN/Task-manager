@@ -106,9 +106,8 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] = dj_database_url.config(
-    default='DATABASE_URL', engine='django.db.backends.postgresql'
-)
+my_db = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(my_db)
 
 # my_db = dj_database_url.config(conn_max_age=600, engine='django.db.backends.postgresql')
 # DATABASES['default'].update(my_db)
