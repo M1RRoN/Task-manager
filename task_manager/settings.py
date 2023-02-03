@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
     'bootstrap5',
     'django_filters',
+    'django_extensions',
 
     'users',
     'statuses',
