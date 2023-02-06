@@ -27,7 +27,7 @@ load_dotenv()
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY',)
-
+ENGINE = os.getenv('ENGINE',)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get('DEBUG', True))
 
@@ -99,6 +99,7 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+#
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -106,11 +107,12 @@ DATABASES = {
     }
 }
 
+
 # DATABASES = {
 #     "default": dj_database_url.config(conn_max_age=600)
 # }
 
-my_db = dj_database_url.config(conn_max_age=600, engine='django.db.backends.postgresql')
+my_db = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(my_db)
 
 # Password validation
