@@ -106,14 +106,21 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3'
 #     }
 # }
-DATABASE_URL = os.getenv ( "DATABASE_URL" )
 
-DATABASES = {
-    "default": dj_database_url.config(default= DATABASE_URL, conn_max_age=600)
-}
+
+# DATABASES = {
+#     "default": dj_database_url.config(conn_max_age=600)
+# }
 
 # my_db = dj_database_url.config(conn_max_age=600)
 # DATABASES['default'].update(my_db)
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+DATABASES = {
+    "default": dj_database_url.config(default='sqlite:///db.sqlite3',
+                                      conn_max_age=1800),
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
