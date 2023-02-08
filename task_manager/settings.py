@@ -102,8 +102,7 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 DATABASES = {
-    "default": dj_database_url.config(default='sqlite:///db.sqlite3',
-                                      conn_max_age=1800),
+    "default": dj_database_url.config(default='sqlite:///db.sqlite3', conn_max_age=1800)
 }
 
 # Password validation
