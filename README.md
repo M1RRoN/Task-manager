@@ -8,7 +8,8 @@
 
 _Register, create, delete and edit tasks, labels and statuses, assign executors to tasks. Filter tasks by tags, statuses, and executors, or filter only your created tasks._
 
-DEMO
+# DEMO
+
 Just click and try to use DEMO on [Railway](https://web-production-e785.up.railway.app/)
 
 P.S.: You will need to register to try all the features in demo.
