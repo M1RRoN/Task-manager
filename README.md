@@ -34,9 +34,7 @@ Install dependencies with Poetry:
 
 Create an ".env" file in the root project directory: 
 
-`touch .env`
-
-оr rename and edit existing ".env.example" file.
+`cp .env.sample .env`
 
 Write following constants to the .env file:
 
