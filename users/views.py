@@ -1,16 +1,17 @@
+from django.contrib.auth import get_user_model
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView, DeleteView
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView
 
-from Mixin import MyLoginRequiredMixin, UserPermissionMixin
+from task_manager.Mixin import MyLoginRequiredMixin, UserPermissionMixin
 from .forms import UserForm
 from .models import CustomUser
 
 
-def users_page(request):
-    users = CustomUser.objects.all()
-    return render(request, 'users/users.html', {'users': users})
+class UserList(ListView):
+    model = get_user_model()
+    template_name = "users/users.html"
+    context_object_name = "users"
 
 
 class RegisterUser(SuccessMessageMixin, CreateView):

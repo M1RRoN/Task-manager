@@ -2,6 +2,7 @@ import os
 import json
 
 from django.contrib.auth import get_user_model
+from django.db.models import ProtectedError
 from django.test import TestCase
 from django.urls import reverse_lazy
 
@@ -10,7 +11,7 @@ from task_manager.settings import FIXTURE_DIRS
 
 
 class SetupTestLabels(TestCase):
-    fixtures = ['labels.json', 'users.json']
+    fixtures = ['users.json', 'statuses.json', 'labels.json', 'tasks.json']
 
     def setUp(self):
         self.labels_urls = reverse_lazy('labels')
@@ -18,6 +19,7 @@ class SetupTestLabels(TestCase):
         self.update_label1_url = reverse_lazy('update_label', kwargs={'pk': 1})
         self.delete_label1_url = reverse_lazy('delete_label', kwargs={'pk': 1})
         self.delete_label2_url = reverse_lazy('delete_label', kwargs={'pk': 2})
+        self.delete_label3_url = reverse_lazy('delete_label', kwargs={'pk': 3})
         self.user1 = get_user_model().objects.get(pk=1)
         self.label1 = Label.objects.get(pk=1)
         with open(os.path.join(FIXTURE_DIRS[0], "test_label1.json")) as file:
@@ -25,7 +27,7 @@ class SetupTestLabels(TestCase):
 
 
 class TestLabels(SetupTestLabels):
-    fixtures = ['labels.json', 'users.json']
+    fixtures = ['users.json', 'statuses.json', 'labels.json', 'tasks.json']
 
     def test_open_labels_page(self):
         self.client.force_login(self.user1)
@@ -70,7 +72,13 @@ class TestLabels(SetupTestLabels):
 
     def test_delete_label(self):
         self.client.force_login(user=self.user1)
-        response = self.client.delete(path=self.delete_label2_url)
+        response = self.client.delete(path=self.delete_label3_url)
         self.assertEqual(first=response.status_code, second=302)
         with self.assertRaises(Label.DoesNotExist):
-            Label.objects.get(pk=2)
+            Label.objects.get(pk=3)
+
+    def test_cant_delete_label_with_task(self):
+        self.client.force_login(user=self.user1)
+        with self.assertRaises(expected_exception=ProtectedError):
+            self.client.delete(path=self.delete_label1_url)
+        self.assertEqual(first=Label.objects.all().count(), second=3)

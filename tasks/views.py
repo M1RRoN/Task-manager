@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 from django_filters.views import FilterView
 
-from Mixin import TaskPassesTestMixin
+from task_manager.Mixin import TaskPassesTestMixin
 from tasks.filters import TaskFilter
 from tasks.forms import TaskForm
 from tasks.models import Task

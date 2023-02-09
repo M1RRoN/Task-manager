@@ -1,6 +1,7 @@
 import json
 import os
 
+from django.contrib.messages import get_messages
 from django.contrib.auth import get_user_model
 from django.test import TestCase, Client
 from django.urls import reverse_lazy
@@ -83,5 +84,8 @@ class TestUser(TestCase):
     def test_delete_other_user(self):
         self.client.force_login(self.user2)
         response = self.client.post(self.delete_pk1_url)
+        messages = list(get_messages(response.wsgi_request))
+        self.assertEqual(str(messages[0]), "У вас нет прав для изменения другого пользователя.")
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(self.users.count(), 3)
+        users_count = self.users.count()
+        self.assertEqual(users_count, 3)
