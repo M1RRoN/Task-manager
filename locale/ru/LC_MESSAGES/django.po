@@ -217,7 +217,7 @@ msgstr "Изменение задачи"
 
 #: templates/users/create.html:14 users/views.py:29
 msgid "Register"
-msgstr "Регистрация"
+msgstr "Зарегистрировать"
 
 #: templates/users/delete.html:6 users/views.py:49
 msgid "Delete user"
