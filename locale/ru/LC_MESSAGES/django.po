@@ -90,7 +90,7 @@ msgstr "Выход"
 
 #: templates/base.html:41 templates/task_manager/login.html:5
 msgid "Login"
-msgstr "Вход"
+msgstr "Войти"
 
 #: templates/base.html:42 templates/users/create.html:6
 msgid "Registration"
