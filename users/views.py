@@ -18,6 +18,7 @@ class UserList(ListView):
                      'btn_delete': _('Delete'),
                      }
 
+
 class RegisterUser(SuccessMessageMixin, CreateView):
     model = CustomUser
     form_class = UserForm
