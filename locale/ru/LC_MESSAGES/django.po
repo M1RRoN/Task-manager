@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-13 18:29+0400\n"
+"POT-Creation-Date: 2023-02-13 19:22+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -88,7 +88,7 @@ msgstr "Задачи"
 msgid "Logout"
 msgstr "Выход"
 
-#: templates/base.html:41
+#: templates/base.html:41 templates/task_manager/login.html:5
 msgid "Login"
 msgstr "Вход"
 
@@ -126,11 +126,11 @@ msgstr "Да, удалить"
 msgid "Created at"
 msgstr "Дата создания"
 
-#: templates/labels/index.html:27 templates/statuses/index.html:27
+#: templates/labels/index.html:27 templates/labels/update.html:14
+#: templates/statuses/index.html:27 templates/statuses/update.html:14
 #: templates/tasks/index.html:45 templates/tasks/task.html:51
-#: templates/users/users.html:28 users/views.py:17 users/views.py:40
-#: templates/labels/update.html:14 templates/statuses/update.html:14
 #: templates/tasks/update.html:14 templates/users/update.html:13
+#: templates/users/users.html:28 users/views.py:17 users/views.py:40
 msgid "Update"
 msgstr "Изменить"
 
@@ -140,6 +140,12 @@ msgstr "Изменить"
 msgid "Delete"
 msgstr "Удалить"
 
+#: templates/labels/update.html:6
+#, fuzzy
+#| msgid "Create label"
+msgid "Update label"
+msgstr "Создать метку"
+
 #: templates/statuses/delete.html:20
 msgid "Are you sure you want to delete the status?"
 msgstr "Вы действительно хотите удалить статус?"
@@ -147,6 +153,12 @@ msgstr "Вы действительно хотите удалить статус
 #: templates/statuses/index.html:10
 msgid "Create status"
 msgstr "Создать статус"
+
+#: templates/statuses/update.html:6
+#, fuzzy
+#| msgid "Update task"
+msgid "Update status"
+msgstr "Изменение задачи"
 
 #: templates/task_manager/index.html:5
 msgid "Main page"
@@ -160,10 +172,6 @@ msgstr "Простой и функциональный менеджер зада
 msgid "To learn more"
 msgstr "Узнать больше"
 
-#: templates/task_manager/login.html:31
-msgid "Entry"
-msgstr "Войти"
-
 #: templates/task_manager/login.html:12 templates/users/users.html:14
 msgid "User name"
 msgstr "Имя пользователя"
@@ -171,6 +179,10 @@ msgstr "Имя пользователя"
 #: templates/task_manager/login.html:24
 msgid "Password"
 msgstr "Пароль"
+
+#: templates/task_manager/login.html:31
+msgid "Entry"
+msgstr "Войти"
 
 #: templates/tasks/create.html:6 templates/tasks/index.html:11
 msgid "Create task"
