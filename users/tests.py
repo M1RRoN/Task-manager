@@ -63,6 +63,8 @@ class TestUser(TestCase):
     def test_update_other_user(self):
         self.client.force_login(self.user2)
         response = self.client.post(self.update_pk1_url, data=self.test_user)
+        messages = list(get_messages(response.wsgi_request))
+        self.assertEqual(str(messages[0]), "У вас нет прав для изменения другого пользователя.")
         self.assertRedirects(response, self.users_url, 302, 200)
 
     def test_open_delete_page(self):

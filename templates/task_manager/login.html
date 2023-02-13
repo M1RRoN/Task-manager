@@ -2,39 +2,33 @@
 {% load i18n %}
 
 {% block title %}
-{% trans "Войти" %}
+{% trans "Login" %}
 {% endblock %}
 
 
 {% block content %}
-<!--{% if form.errors %}-->
-<!--    <p>{{ form.errors.error }}</p>-->
-<!--{% endif %}-->
-<!--<h1>{% trans "Вход" %}</h1>-->
 <form method="post">
     {% csrf_token %}
-<!--    {{ form.as_p }}-->
-<!--    <button type="submit">Voity</button>-->
-    <div class="form-group"><label for="id_username">{% trans "Имя пользователя" %}</label><input type="text"
+    <div class="form-group"><label for="id_username">{% trans "User name" %}</label><input type="text"
                                                                                                   name="username"
                                                                                                   autofocus
                                                                                                   autocapitalize="none"
                                                                                                   autocomplete="username"
                                                                                                   maxlength="150"
                                                                                                   class="form-control"
-                                                                                                  placeholder="Имя пользователя"
+                                                                                                  placeholder="User name"
                                                                                                   title="" required
                                                                                                   id="id_username">
     </div>
     <br>
-    <div class="form-group"><label for="id_password">{% trans "Пароль" %}</label><input type="password" name="password"
+    <div class="form-group"><label for="id_password">{% trans "Password" %}</label><input type="password" name="password"
                                                                                         autocomplete="current-password"
                                                                                         class="form-control"
-                                                                                        placeholder="Пароль" title=""
+                                                                                        placeholder="Password" title=""
                                                                                         required id="id_password"></div>
     <br>
     <div class="form-group">
-        <input class="btn btn-primary" type="submit" value="Войти">
+        <input class="btn btn-primary" type="submit" value="Login">
     </div>
 </form>
 {% endblock %}

@@ -3,7 +3,7 @@
 {% load i18n %}
 
 {% block title %}
-Удалить задачу
+{% trans 'Delete task' %}
 {% endblock %}
 
 {% block content %}
@@ -17,9 +17,9 @@
  <form method="post" class="mx-auto">
     {% csrf_token %}
     {% bootstrap_form form %}
-    <p>{% trans 'Вы действительно хотите удалить задачу' %} {{ object }}?</p>
+    <p>{% trans 'Are you sure you want to delete the task?' %} {{ object }}?</p>
     {% bootstrap_form form %}
-    <input class="btn btn-danger" type="submit" value="{% trans 'Да, удалить' %}">
+    <input class="btn btn-danger" type="submit" value="{% trans 'Yes, delete' %}">
 </form>
 </div>
 {% endblock %}

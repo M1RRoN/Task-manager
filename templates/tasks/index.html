@@ -3,19 +3,19 @@
 {% load bootstrap5 %}
 
 {% block title %}
-{% trans "Задачи" %}
+{% trans "Tasks" %}
 {% endblock %}
 
 {% block content %}
-<h1>{% trans "Задачи" %}</h1>
-<a href="{% url 'create_task' %}">Создать задачу</a>
+<h1>{% trans "Tasks" %}</h1>
+<a href="{% url 'create_task' %}">{% trans 'Create task' %}</a>
 <br>
 <div class="card mb-3">
     <div class="card-body bg-light">
-        <h3>{% trans 'Поиск задачи' %}</h3>
+        <h3>{% trans 'Find task' %}</h3>
         <form method="get" class="form-check">
             {% bootstrap_form filter.form %}
-            <input class="btn btn-primary" type="submit" value="Показать">
+            <input class="btn btn-primary" type="submit" value="{% trans 'show' %}">
         </form>
     </div>
 </div>
@@ -24,11 +24,11 @@
   <thead>
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">{% trans "Имя" %}</th>
-      <th scope="col">{% trans "Статус" %}</th>
-      <th scope="col">{% trans "Автор" %}</th>
-      <th scope="col">{% trans "Исполнитель" %}</th>
-      <th scope="col">{% trans "Дата создания" %}</th>
+      <th scope="col">{% trans "Name" %}</th>
+      <th scope="col">{% trans "Status" %}</th>
+      <th scope="col">{% trans "Author" %}</th>
+      <th scope="col">{% trans "Executor" %}</th>
+      <th scope="col">{% trans "Created at" %}</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -42,9 +42,9 @@
       <td>{{ task.executor }}</td>
       <td>{{ task.created_at }}</td>
       <td>
-          <a href="{% url 'update_task' task.pk %}">Изменить</a>
+          <a href="{% url 'update_task' task.pk %}">{% trans 'Update' %}</a>
           <br>
-          <a href="{% url 'delete_task' task.pk %}">Удалить</a>
+          <a href="{% url 'delete_task' task.pk %}">{% trans 'Delete' %}</a>
       </td>
     </tr>
     {% endfor %}

@@ -3,14 +3,14 @@
 {% load i18n %}
 
 {% block title %}
-Изменение пользователя
+{% trans 'Update user' %}
 {% endblock %}
 
 {% block content %}
 <form method="post" class="form">
   {% csrf_token %}
   {% bootstrap_form form %}
-  <input class="btn btn-primary" type="submit" value="Изменить">
+  <input class="btn btn-primary" type="submit" value="{% trans 'update' %}">
 </form>
 {% if messages %}
 <ul class="messages">

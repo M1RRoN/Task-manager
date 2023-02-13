@@ -3,7 +3,7 @@
 {% load i18n %}
 
 {% block title %}
-Создать статус
+Create status
 {% endblock %}
 
 {% block content %}
@@ -11,7 +11,7 @@
 <form method="post" class="form">
   {% csrf_token %}
   {% bootstrap_form form %}
-  <input class="btn btn-primary" type="submit" value="Создать">
+  <input class="btn btn-primary" type="submit" value="{% trans 'create' %}">
 </form>
 
 {% endblock %}
