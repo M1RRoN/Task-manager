@@ -86,11 +86,11 @@ msgstr "Задачи"
 
 #: templates/base.html:39
 msgid "Logout"
-msgstr "Выйти"
+msgstr "Выход"
 
 #: templates/base.html:41 templates/task_manager/login.html:5
 msgid "Login"
-msgstr "Войти"
+msgstr "Вход"
 
 #: templates/base.html:42 templates/users/create.html:6
 msgid "Registration"
