@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-13 17:05+0400\n"
+"POT-Creation-Date: 2023-02-13 18:29+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -88,9 +88,9 @@ msgstr "Задачи"
 msgid "Logout"
 msgstr "Выход"
 
-#: templates/base.html:41 templates/task_manager/login.html:5
+#: templates/base.html:41
 msgid "Login"
-msgstr "Войти"
+msgstr "Вход"
 
 #: templates/base.html:42 templates/users/create.html:6
 msgid "Registration"
@@ -115,7 +115,7 @@ msgstr "Вы действительно хотите удалить метку?"
 
 #: templates/labels/delete.html:22 templates/statuses/delete.html:22
 #: templates/tasks/delete.html:22 templates/users/delete.html:22
-#: users/views.py:49
+#: users/views.py:50
 msgid "Yes, delete"
 msgstr "Да, удалить"
 
@@ -128,7 +128,7 @@ msgstr "Дата создания"
 
 #: templates/labels/index.html:27 templates/statuses/index.html:27
 #: templates/tasks/index.html:45 templates/tasks/task.html:51
-#: templates/users/users.html:28 users/views.py:17 users/views.py:39
+#: templates/users/users.html:28 users/views.py:17 users/views.py:40
 msgid "Update"
 msgstr "Изменить"
 
@@ -164,6 +164,10 @@ msgstr "Простой и функциональный менеджер зада
 #: templates/task_manager/index.html:14
 msgid "To learn more"
 msgstr "Узнать больше"
+
+#: templates/task_manager/login.html:31
+msgid "Entry"
+msgstr "Войти"
 
 #: templates/task_manager/login.html:12 templates/users/users.html:14
 msgid "User name"
@@ -211,11 +215,11 @@ msgstr "Дата создания"
 msgid "Update task"
 msgstr "Изменение задачи"
 
-#: templates/users/create.html:14 users/views.py:28
+#: templates/users/create.html:14 users/views.py:29
 msgid "Register"
 msgstr "Регистрация"
 
-#: templates/users/delete.html:6 users/views.py:48
+#: templates/users/delete.html:6 users/views.py:49
 msgid "Delete user"
 msgstr "Удаление пользователя"
 
@@ -223,7 +227,7 @@ msgstr "Удаление пользователя"
 msgid "Are you sure you want to delete the user?"
 msgstr "Вы действительно хотите удалить пользователя?"
 
-#: templates/users/update.html:6 users/views.py:38
+#: templates/users/update.html:6 users/views.py:39
 msgid "Update user"
 msgstr "Изменение пользователя"
 
@@ -231,18 +235,18 @@ msgstr "Изменение пользователя"
 msgid "Full name"
 msgstr "Полное имя"
 
-#: users/views.py:26
+#: users/views.py:27
 msgid "User successfully registered"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: users/views.py:27
+#: users/views.py:28
 msgid "Registration user"
 msgstr "Регистрация пользователя"
 
-#: users/views.py:37
+#: users/views.py:38
 msgid "User successfully updated"
 msgstr "Пользователь успешно изменён"
 
-#: users/views.py:47
+#: users/views.py:48
 msgid "User successfully deleted"
 msgstr "Пользователь успешно удалён"
