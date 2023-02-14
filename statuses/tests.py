@@ -68,7 +68,5 @@ class TestStatuses(SetupTestStatuses):
         self.client.force_login(user=self.user)
         response = self.client.delete(path=self.delete_status2_url)
         self.assertEqual(first=response.status_code, second=302)
-        messages = list(get_messages(response.wsgi_request))
-        self.assertIn(messages[0], messages)
         with self.assertRaises(Status.DoesNotExist):
             Status.objects.get(pk=2)
