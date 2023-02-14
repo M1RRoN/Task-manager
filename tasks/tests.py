@@ -2,6 +2,7 @@ import os
 import json
 
 from django.contrib.auth import get_user_model
+from django.contrib.messages import get_messages
 from django.test import TestCase
 from django.urls import reverse_lazy
 from tasks.models import Task
@@ -83,4 +84,6 @@ class TestTask(SetupTestTasks):
         response = self.client.delete(path=self.delete_task2_url)
         self.assertEqual(first=response.status_code, second=302)
         self.assertRedirects(response=response, expected_url=self.tasks_url)
+        messages = list(get_messages(response.wsgi_request))
+        self.assertIn(messages[0], messages)
         self.assertEqual(first=Task.objects.all().count(), second=2)

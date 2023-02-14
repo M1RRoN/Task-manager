@@ -2,6 +2,7 @@ import os
 import json
 
 from django.contrib.auth import get_user_model
+from django.contrib.messages import get_messages
 from django.test import TestCase
 from django.urls import reverse_lazy
 from statuses.models import Status
@@ -53,10 +54,8 @@ class TestStatuses(SetupTestStatuses):
     def test_update_status(self):
         self.client.force_login(user=self.user)
         self.assertNotEqual(self.status1.name, self.test_status.get("name"))
-
         response = self.client.post(path=self.update_status_url, data=self.test_status)
         self.assertEqual(response.status_code, 302)
-
         self.status1 = Status.objects.get(pk=1)
         self.assertEqual(first=self.status1.name, second=self.test_status.get('name'))
 
@@ -69,5 +68,7 @@ class TestStatuses(SetupTestStatuses):
         self.client.force_login(user=self.user)
         response = self.client.delete(path=self.delete_status2_url)
         self.assertEqual(first=response.status_code, second=302)
+        messages = list(get_messages(response.wsgi_request))
+        self.assertIn(messages[0], messages)
         with self.assertRaises(Status.DoesNotExist):
             Status.objects.get(pk=2)

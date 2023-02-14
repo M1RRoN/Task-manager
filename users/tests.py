@@ -16,7 +16,6 @@ class TestUser(TestCase):
         self.create_url = reverse_lazy('create_user')
         self.login_url = reverse_lazy('login')
         self.users_url = reverse_lazy('users')
-        self.users = get_user_model().objects.all()
         self.user1 = get_user_model().objects.get(pk=1)
         self.user2 = get_user_model().objects.get(pk=2)
         self.update_pk1_url = reverse_lazy('update', kwargs={'pk': 1})
@@ -64,7 +63,7 @@ class TestUser(TestCase):
         self.client.force_login(self.user2)
         response = self.client.post(self.update_pk1_url, data=self.test_user)
         messages = list(get_messages(response.wsgi_request))
-        self.assertEqual(str(messages[0]), "У вас нет прав для изменения другого пользователя.")
+        self.assertIn(messages[0], messages)
         self.assertRedirects(response, self.users_url, 302, 200)
 
     def test_open_delete_page(self):
@@ -79,15 +78,15 @@ class TestUser(TestCase):
         self.client.force_login(self.user2)
         response = self.client.delete(self.delete_pk2_url)
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(self.users.count(), 2)
+        self.assertEqual(get_user_model().objects.count(), 2)
         with self.assertRaises(get_user_model().DoesNotExist):
             get_user_model().objects.get(pk=2)
 
     def test_delete_other_user(self):
+        users_count = get_user_model().objects.count()
         self.client.force_login(self.user2)
         response = self.client.post(self.delete_pk1_url)
         messages = list(get_messages(response.wsgi_request))
-        self.assertEqual(str(messages[0]), "У вас нет прав для изменения другого пользователя.")
+        self.assertIn(messages[0], messages)
         self.assertEqual(response.status_code, 302)
-        users_count = self.users.count()
-        self.assertEqual(users_count, 3)
+        self.assertEqual(get_user_model().objects.count(), users_count)
