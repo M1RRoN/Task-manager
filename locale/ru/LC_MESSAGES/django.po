@@ -27,12 +27,12 @@ msgstr "Нельзя удалить метку, потому что она ис�
 #: labels/views.py:22
 #, fuzzy
 msgid "Label successfully created"
-msgstr "Пользователь успешно изменён"
+msgstr "Метка успешно создана"
 
 #: labels/views.py:30
 #, fuzzy
 msgid "Label successfully updated"
-msgstr "Пользователь успешно изменён"
+msgstr "Метка успешно изменена"
 
 #: labels/views.py:37
 #, fuzzy
