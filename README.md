@@ -18,7 +18,7 @@ P.S.: You will need to register to try all the features in demo.
 
 Clone the repository:
 
-`git clone https://github.com/DzmitrySha/python-project-52.git`
+`git clone https://github.com/M1RRoN/python-project-52.git`
 
 Go to the project folder:
 
