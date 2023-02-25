@@ -40,17 +40,14 @@ msgid "It`s not possible to delete the label that is being used"
 msgstr "Нельзя удалить метку, потому что она используется"
 
 #: statuses/views.py:24
-#, fuzzy
 msgid "Status successfully created"
 msgstr "Статус успешно изменён"
 
 #: statuses/views.py:32
-#, fuzzy
 msgid "Status successfully updated"
 msgstr "Статус успешно изменён"
 
 #: statuses/views.py:39
-#, fuzzy
 msgid "Status successfully deleted"
 msgstr "Статус успешно удалён"
 
