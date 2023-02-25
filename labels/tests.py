@@ -2,6 +2,7 @@ import os
 import json
 
 from django.contrib.auth import get_user_model
+from django.contrib.messages import get_messages
 from django.db.models import ProtectedError
 from django.test import TestCase
 from django.urls import reverse_lazy
@@ -78,7 +79,11 @@ class TestLabels(SetupTestLabels):
             Label.objects.get(pk=3)
 
     def test_cant_delete_label_with_task(self):
+        labels_count = Label.objects.all().count()
         self.client.force_login(user=self.user1)
         with self.assertRaises(expected_exception=ProtectedError):
             self.client.delete(path=self.delete_label1_url)
-        self.assertEqual(first=Label.objects.all().count(), second=3)
+        self.assertEqual(first=labels_count, second=3)
+        response = self.client.post(self.delete_label1_url)
+        messages = [m.message for m in get_messages(response.wsgi_request)]
+        self.assertIn('It`s not possible to delete the label that is being used', messages)

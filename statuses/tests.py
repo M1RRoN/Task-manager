@@ -2,6 +2,9 @@ import os
 import json
 
 from django.contrib.auth import get_user_model
+from django.contrib.messages import get_messages
+from django.core.exceptions import ObjectDoesNotExist
+from django.db.models import ProtectedError
 from django.test import TestCase
 from django.urls import reverse_lazy
 from statuses.models import Status
@@ -9,7 +12,7 @@ from task_manager.settings import FIXTURE_DIRS
 
 
 class SetupTestStatuses(TestCase):
-    fixtures = ['users.json']
+    fixtures = ['users.json', 'statuses.json', 'labels.json', 'tasks.json']
 
     def setUp(self):
         self.statuses_url = reverse_lazy('statuses')
@@ -17,6 +20,7 @@ class SetupTestStatuses(TestCase):
         self.update_status_url = reverse_lazy("update_status", kwargs={"pk": 1})
         self.delete_status1_url = reverse_lazy("delete_status", kwargs={"pk": 1})
         self.delete_status2_url = reverse_lazy("delete_status", kwargs={"pk": 2})
+        self.delete_status3_url = reverse_lazy("delete_status", kwargs={"pk": 3})
         self.user = get_user_model().objects.get(pk=1)
         self.status1 = Status.objects.get(pk=1)
         with open(os.path.join(FIXTURE_DIRS[0], "test_status1.json")) as file:
@@ -24,7 +28,7 @@ class SetupTestStatuses(TestCase):
 
 
 class TestStatuses(SetupTestStatuses):
-    fixtures = ["users.json", "statuses.json"]
+    fixtures = ['users.json', 'statuses.json', 'labels.json', 'tasks.json']
 
     def test_open_statuses_page(self):
         self.client.force_login(user=self.user)
@@ -65,7 +69,17 @@ class TestStatuses(SetupTestStatuses):
 
     def test_delete_status(self):
         self.client.force_login(user=self.user)
-        response = self.client.delete(path=self.delete_status2_url)
+        response = self.client.delete(path=self.delete_status3_url)
         self.assertEqual(first=response.status_code, second=302)
-        with self.assertRaises(Status.DoesNotExist):
-            Status.objects.get(pk=2)
+        with self.assertRaises(ObjectDoesNotExist):
+            Status.objects.get(pk=3)
+
+    def test_cant_delete_status_with_task(self):
+        statuses_count = Status.objects.all().count()
+        self.client.force_login(user=self.user)
+        with self.assertRaises(expected_exception=ProtectedError):
+            response = self.client.delete(path=self.delete_status1_url)
+            messages = [m.message for m in get_messages(response.wsgi_request)]
+            self.assertIn('It`s not possible to delete the status that is being used', messages)
+        self.assertEqual(first=statuses_count, second=3)
+

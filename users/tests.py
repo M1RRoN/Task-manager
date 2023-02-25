@@ -86,7 +86,7 @@ class TestUser(TestCase):
         users_count = get_user_model().objects.count()
         self.client.force_login(self.user2)
         response = self.client.post(self.delete_pk1_url)
-        messages = list(get_messages(response.wsgi_request))
-        self.assertIn(messages[0], messages)
+        messages = [m.message for m in get_messages(response.wsgi_request)]
+        self.assertIn('У вас нет прав для изменения другого пользователя.', messages)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(get_user_model().objects.count(), users_count)
