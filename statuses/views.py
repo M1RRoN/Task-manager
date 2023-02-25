@@ -40,6 +40,7 @@ class DeleteStatusView(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
 
     def post(self, request, *args, **kwargs):
         if self.get_object().task_set.count():
-            messages.warning(self.request, _('It`s not possible to delete the status that is being used'))
+            messages.warning(self.request,
+                             _('It`s not possible to delete the status that is being used'))
             return redirect(self.success_url)
         return super().post(request, *args, **kwargs)
