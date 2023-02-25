@@ -6,6 +6,7 @@ from django.contrib.messages import get_messages
 from django.db.models import ProtectedError
 from django.test import TestCase
 from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
 
 from labels.models import Label
 from task_manager.settings import FIXTURE_DIRS
@@ -86,4 +87,4 @@ class TestLabels(SetupTestLabels):
         self.assertEqual(first=labels_count, second=3)
         response = self.client.post(self.delete_label1_url)
         messages = [m.message for m in get_messages(response.wsgi_request)]
-        self.assertIn('It`s not possible to delete the label that is being used', messages)
+        self.assertIn(_('It`s not possible to delete the label that is being used'), messages)

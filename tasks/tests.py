@@ -7,6 +7,7 @@ from django.test import TestCase
 from django.urls import reverse_lazy
 from tasks.models import Task
 from task_manager.settings import FIXTURE_DIRS
+from django.utils.translation import gettext_lazy as _
 
 
 class SetupTestTasks(TestCase):
@@ -85,5 +86,5 @@ class TestTask(SetupTestTasks):
         self.assertEqual(first=response.status_code, second=302)
         self.assertRedirects(response=response, expected_url=self.tasks_url)
         messages = list(get_messages(response.wsgi_request))
-        self.assertIn(messages[0], messages)
+        self.assertIn(_('It`s not possible to delete the task that is being used'), messages)
         self.assertEqual(first=Task.objects.all().count(), second=2)

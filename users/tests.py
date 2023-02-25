@@ -6,6 +6,7 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase, Client
 from django.urls import reverse_lazy
 from .forms import UserForm
+from django.utils.translation import gettext_lazy as _
 
 
 class TestUser(TestCase):
@@ -87,6 +88,6 @@ class TestUser(TestCase):
         self.client.force_login(self.user2)
         response = self.client.post(self.delete_pk1_url)
         messages = [m.message for m in get_messages(response.wsgi_request)]
-        self.assertIn('У вас нет прав для изменения другого пользователя.', messages)
+        self.assertIn(_('You do not have permissions to change another user.'), messages)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(get_user_model().objects.count(), users_count)

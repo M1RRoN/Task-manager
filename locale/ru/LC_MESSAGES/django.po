@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-24 17:22+0400\n"
+"POT-Creation-Date: 2023-02-25 20:56+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,10 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: labels/tests.py:90 labels/views.py:41
+msgid "It`s not possible to delete the label that is being used"
+msgstr "Нельзя удалить метку, потому что она используется"
 
 #: labels/views.py:22
 #, fuzzy
@@ -35,13 +39,13 @@ msgstr "Пользователь успешно изменён"
 msgid "Label successfully deleted"
 msgstr "Метка успешно удалена"
 
-#: labels/views.py:41
-msgid "It`s not possible to delete the label that is being used"
-msgstr "Нельзя удалить метку, потому что она используется"
+#: statuses/tests.py:84 statuses/views.py:43
+msgid "It`s not possible to delete the status that is being used"
+msgstr "Нельзя удалить статус, потому что он используется."
 
 #: statuses/views.py:24
 msgid "Status successfully created"
-msgstr "Статус успешно изменён"
+msgstr "Статус успешно создан"
 
 #: statuses/views.py:32
 msgid "Status successfully updated"
@@ -50,10 +54,6 @@ msgstr "Статус успешно изменён"
 #: statuses/views.py:39
 msgid "Status successfully deleted"
 msgstr "Статус успешно удалён"
-
-#: statuses/views.py:43
-msgid "It`s not possible to delete the status that is being used"
-msgstr "Нельзя удалить статус, потому что он используется."
 
 #: task_manager/dataclasses.py:6 templates/labels/index.html:15
 #: templates/statuses/index.html:15 templates/tasks/index.html:27
@@ -99,6 +99,12 @@ msgstr "Вы разлогинены"
 #: tasks/filters.py:27
 msgid "Only your tasks"
 msgstr "Только свои задачи"
+
+#: tasks/tests.py:89
+#, fuzzy
+#| msgid "It`s not possible to delete the status that is being used"
+msgid "It`s not possible to delete the task that is being used"
+msgstr "Нельзя удалить статус, потому что он используется."
 
 #: tasks/views.py:26
 #, fuzzy
@@ -285,6 +291,10 @@ msgstr "Изменение пользователя"
 #: templates/users/users.html:15
 msgid "Full name"
 msgstr "Полное имя"
+
+#: users/tests.py:91
+msgid "You do not have permissions to change another user."
+msgstr "У вас нет прав для изменения другого пользователя."
 
 #: users/views.py:31
 msgid "User successfully registered"

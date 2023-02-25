@@ -9,6 +9,7 @@ from django.test import TestCase
 from django.urls import reverse_lazy
 from statuses.models import Status
 from task_manager.settings import FIXTURE_DIRS
+from django.utils.translation import gettext_lazy as _
 
 
 class SetupTestStatuses(TestCase):
@@ -80,5 +81,5 @@ class TestStatuses(SetupTestStatuses):
         with self.assertRaises(expected_exception=ProtectedError):
             response = self.client.delete(path=self.delete_status1_url)
             messages = [m.message for m in get_messages(response.wsgi_request)]
-            self.assertIn('It`s not possible to delete the status that is being used', messages)
+            self.assertIn(_('It`s not possible to delete the status that is being used'), messages)
         self.assertEqual(first=statuses_count, second=3)
