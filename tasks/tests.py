@@ -85,6 +85,6 @@ class TestTask(SetupTestTasks):
         response = self.client.delete(path=self.delete_task2_url)
         self.assertEqual(first=response.status_code, second=302)
         self.assertRedirects(response=response, expected_url=self.tasks_url)
-        messages = list(get_messages(response.wsgi_request))
-        self.assertIn(_('It`s not possible to delete the task that is being used'), messages)
+        messages = [m.message for m in get_messages(response.wsgi_request)]
+        self.assertIn(_('A task can only be deleted by its author.'), messages)
         self.assertEqual(first=Task.objects.all().count(), second=2)

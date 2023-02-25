@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-25 20:56+0400\n"
+"POT-Creation-Date: 2023-02-25 21:16+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,15 +96,21 @@ msgstr "Вы залогинены"
 msgid "You are logged out"
 msgstr "Вы разлогинены"
 
+#: task_manager/mixin.py:10
+msgid "You are not authorized! Please sign in."
+msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
+
+#: task_manager/mixin.py:21 users/tests.py:91
+msgid "You do not have permissions to change another user."
+msgstr "У вас нет прав для изменения другого пользователя."
+
+#: task_manager/mixin.py:32 tasks/tests.py:89
+msgid "A task can only be deleted by its author."
+msgstr "Задачу может удалить только её автор"
+
 #: tasks/filters.py:27
 msgid "Only your tasks"
 msgstr "Только свои задачи"
-
-#: tasks/tests.py:89
-#, fuzzy
-#| msgid "It`s not possible to delete the status that is being used"
-msgid "It`s not possible to delete the task that is being used"
-msgstr "Нельзя удалить статус, потому что он используется."
 
 #: tasks/views.py:26
 #, fuzzy
@@ -291,10 +297,6 @@ msgstr "Изменение пользователя"
 #: templates/users/users.html:15
 msgid "Full name"
 msgstr "Полное имя"
-
-#: users/tests.py:91
-msgid "You do not have permissions to change another user."
-msgstr "У вас нет прав для изменения другого пользователя."
 
 #: users/views.py:31
 msgid "User successfully registered"
