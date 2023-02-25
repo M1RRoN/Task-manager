@@ -25,17 +25,14 @@ msgid "It`s not possible to delete the label that is being used"
 msgstr "Нельзя удалить метку, потому что она используется"
 
 #: labels/views.py:22
-#, fuzzy
 msgid "Label successfully created"
 msgstr "Метка успешно создана"
 
 #: labels/views.py:30
-#, fuzzy
 msgid "Label successfully updated"
 msgstr "Метка успешно изменена"
 
 #: labels/views.py:37
-#, fuzzy
 msgid "Label successfully deleted"
 msgstr "Метка успешно удалена"
 
@@ -113,17 +110,14 @@ msgid "Only your tasks"
 msgstr "Только свои задачи"
 
 #: tasks/views.py:26
-#, fuzzy
 msgid "Task successfully created"
 msgstr "Задача успешно создана"
 
 #: tasks/views.py:40
-#, fuzzy
 msgid "Task successfully updated"
 msgstr "Задача успешно изменена"
 
 #: tasks/views.py:47
-#, fuzzy
 msgid "Task successfully deleted"
 msgstr "Задача успешно удалена"
 
@@ -201,7 +195,6 @@ msgid "Delete"
 msgstr "Удалить"
 
 #: templates/labels/update.html:6
-#, fuzzy
 msgid "Update label"
 msgstr "Изменить метку"
 
@@ -214,7 +207,6 @@ msgid "Create status"
 msgstr "Создать статус"
 
 #: templates/statuses/update.html:6
-#, fuzzy
 msgid "Update status"
 msgstr "Изменение задачи"
 
