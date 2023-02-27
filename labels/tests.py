@@ -42,6 +42,7 @@ class TestLabels(SetupTestLabels):
         self.assertEqual(response.status_code, 200)
 
     def test_create_label(self):
+        labels_count = Label.objects.count()
         self.client.force_login(self.user1)
         response = self.client.post(path=self.create_label_url, data=self.test_label)
         self.assertRedirects(response=response, expected_url=self.labels_urls)
@@ -49,7 +50,7 @@ class TestLabels(SetupTestLabels):
 
         self.label4 = Label.objects.get(pk=4)
         self.assertEqual(first=self.label4.name, second=self.test_label.get('name'))
-        self.assertEqual(Label.objects.all().count(), 4)
+        self.assertEqual(Label.objects.all().count(), labels_count + 1)
 
     def test_open_update_label_page(self):
         self.client.force_login(self.user1)

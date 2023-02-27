@@ -41,13 +41,13 @@ class TestTask(SetupTestTasks):
         self.assertEqual(first=response.status_code, second=200)
 
     def test_create_task(self):
+        task_count = Task.objects.count()
         self.client.force_login(self.user1)
         response = self.client.post(path=self.create_task_url, data=self.test_task)
         self.assertEqual(response.status_code, 302)
-        self.task3 = Task.objects.create(name='new task name', description='New task description')
         self.task3 = Task.objects.get(pk=3)
         self.assertEqual(first=self.task3.name, second=self.test_task.get('name'))
-        self.assertTrue(len(Task.objects.all()) == 4)
+        self.assertEqual(Task.objects.count(), task_count + 1)
 
     def test_open_update_tasks_page(self):
         self.client.force_login(user=self.user1)
@@ -81,10 +81,11 @@ class TestTask(SetupTestTasks):
             Task.objects.get(pk=1)
 
     def test_cant_delete_task_if_user_is_not_author(self):
+        task_count = Task.objects.count()
         self.client.force_login(user=self.user1)
         response = self.client.delete(path=self.delete_task2_url)
         self.assertEqual(first=response.status_code, second=302)
         self.assertRedirects(response=response, expected_url=self.tasks_url)
         messages = [m.message for m in get_messages(response.wsgi_request)]
         self.assertIn(_('A task can only be deleted by its author.'), messages)
-        self.assertEqual(first=Task.objects.all().count(), second=2)
+        self.assertEqual(first=Task.objects.all().count(), second=task_count)
