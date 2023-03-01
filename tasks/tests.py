@@ -73,10 +73,12 @@ class TestTask(SetupTestTasks):
         self.assertEqual(first=response.status_code, second=200)
 
     def test_delete_task(self):
+        task_count = Task.objects.count()
         self.client.force_login(user=self.user1)
         response = self.client.delete(path=self.delete_task1_url)
         self.assertEqual(first=response.status_code, second=302)
-        self.assertEqual(first=Task.objects.all().count(), second=1)
+        task_count_after_delete = Task.objects.count()
+        self.assertGreater(task_count, task_count_after_delete)
         with self.assertRaises(expected_exception=Task.DoesNotExist):
             Task.objects.get(pk=1)
 

@@ -76,7 +76,7 @@ class TestStatuses(SetupTestStatuses):
             Status.objects.get(pk=3)
 
     def test_cant_delete_status_with_task(self):
-        statuses_count = Status.objects.all().count()
+        statuses_count = Status.objects.count()
         self.client.force_login(user=self.user)
         with self.assertRaises(expected_exception=ProtectedError):
             response = self.client.delete(path=self.delete_status1_url)

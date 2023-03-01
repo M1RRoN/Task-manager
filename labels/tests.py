@@ -50,7 +50,7 @@ class TestLabels(SetupTestLabels):
 
         self.label4 = Label.objects.get(pk=4)
         self.assertEqual(first=self.label4.name, second=self.test_label.get('name'))
-        self.assertEqual(Label.objects.all().count(), labels_count + 1)
+        self.assertEqual(Label.objects.count(), labels_count + 1)
 
     def test_open_update_label_page(self):
         self.client.force_login(self.user1)
